@@ -39,8 +39,8 @@ If you see a "Getting Started" page instead, you skipped nothing — it just mea
 ## Customizing
 
 - **Schedule**: set `SPEEDTEST_SCHEDULE` to any [cron expression](https://crontab.guru/) — `0 */6 * * *` = every 6 hours, `0 4 * * *` = daily 04:00, `*/30 * * * *` = twice an hour. The app's internal scheduler reads it from the environment (restarts/redeploys pick up changes).
-- **Prefer specific speedtest servers**: set `SPEEDTEST_SERVERS` to comma-separated server IDs. Find nearby IDs with:
-  `railway ssh` into the service, then `list-servers`.
+- **Prefer specific speedtest servers**: set `SPEEDTEST_SERVERS` to comma-separated server IDs. Find nearby IDs with `railway ssh` into the service, then:
+  `php /app/www/artisan app:ookla-list-servers` (pick the ones with the lowest distance).
 - **Timezone**: `TZ` (container/cron) and `DISPLAY_TIMEZONE` (how times render in the UI).
 - **Pruning**: `PRUNE_RESULTS_OLDER_THAN=30` keeps 30 days of results.
 - **Backup**: everything lives in SQLite — copy `/config/database.sqlite` off the volume (`railway ssh`, then use the Railway volume's SFTP/`railway volume` download or `cp` into a synced folder). Restore by placing it back; keep the matching `APP_KEY`.
