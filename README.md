@@ -15,7 +15,7 @@
 | Healthcheck | `/api/healthcheck` — the app's own unauthenticated API health route |
 | Result retention | `PRUNE_RESULTS_OLDER_THAN=0` (keep everything); change to N days to auto-prune |
 
-There is nothing to type at deploy time — the deploy form shows a single variable (`APP_KEY`) already set to auto-generate.
+There is nothing to type at deploy time — the deploy form has no fields; `APP_KEY` is generated inside the container on first boot.
 
 ## First login — change the password immediately
 
